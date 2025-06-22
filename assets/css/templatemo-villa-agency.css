@@ -147,11 +147,11 @@ body {
 
 .section-heading h2 em {
   font-style: normal;
-  color: #0071f8;
+  color: #67b3f9;
 }
 
 .section-heading h6 {
-  color: #0071f8;
+  color: #67b3f9;
   font-size: 15px;
   text-transform: uppercase;
   font-weight: 700;
@@ -171,7 +171,7 @@ body {
 }
 
 .icon-button a i {
-  background-color: #0071f8;
+  background-color: #67b3f9;
   height: 50px;
   width: 50px;
   text-align: center;
@@ -183,7 +183,7 @@ body {
 }
 
 .icon-button a:hover {
-  color: #0071f8;
+  color: #67b3f9;
 }
 
 .icon-button a:hover i {
@@ -204,7 +204,7 @@ body {
 }
 
 .main-button a:hover {
-  background-color: #0071f8;
+  background-color: #67b3f9;
   color: #fff;
 }
 
@@ -474,7 +474,7 @@ Header Style
 }
 
 .header-area .main-nav .nav li:last-child a i {
-  background-color: #5ba5ff;
+  background-color: #67b3f9;
   display: inline-block;
   width: 40px;
   height: 40px;
@@ -494,16 +494,16 @@ Header Style
 }
 
 .header-area .main-nav .nav li:hover a {
-  color: #41d4f1;
+  color: #67b3f9;
 }
 
 .header-area .main-nav .nav li a.active {
-  color: #41d4f1;
+  color: #67b3f9;
 }
 
 
 .background-header .main-nav .nav li a.active {
-  color: #41d4f1;
+  color: #67b3f9;
 }
 
 .header-area .main-nav .menu-trigger {
@@ -745,7 +745,7 @@ Banner Style
 }
 
 .main-banner .item-1 {
-  background-image: url(../images/banner-01.jpg);
+  background-image: url(../images/banner-02.gif);
 }
 
 .main-banner .item-2 {
@@ -769,7 +769,7 @@ Banner Style
 
 .main-banner .item span.category em {
   font-style: normal;
-  color: #f35525;
+  color: #41d4f1;
 }
 
 .main-banner .item h2 {
@@ -798,7 +798,7 @@ Banner Style
 }
 
 .main-banner .owl-dots .active {
-  background-color: #f35525;
+  background-color: #A7C3F5;
 }
 
 .main-banner .owl-nav {
@@ -859,7 +859,7 @@ Featured Style
   width: 110px;
   height: 110px;
   line-height: 110px;
-  background-color: #0071f8;
+  background-color: #A7C3F5;
   border-radius: 50%;
   text-align: center;
   position: absolute;
@@ -1038,14 +1038,14 @@ Fun Facts Style
 .fun-facts .counter h2 {
   margin-right: 25px;
   font-size: 40px;
-  color: #f35525;
+  color: #A7C3F5;
 }
 
 .fun-facts .counter:after {
   position: absolute;
   width: 50px;
   height: 50px;
-  background-color: #f35525;
+  background-color: #A7C3F5;
   border-radius: 50%;
   content: '';
   right: -25px;
@@ -1081,7 +1081,7 @@ Best Deal Style
 }
 
 .best-deal .tabs-content .nav-tabs .nav-link.active {
-  background-color: #f35525 !important;
+  background-color: #67b3f9 !important;
   color: #fff;
 }
 
@@ -1164,7 +1164,7 @@ Properties Style
 }
 
 .properties .item span.category {
-  background-color: #fbd9cf;
+  background-color: #c9e5ff;
   font-weight: 500;
   border-radius: 5px;
   font-size: 14px;
@@ -1826,3 +1826,24 @@ body {
     margin-right: 100px;
   }
 }
+
+
+  .services-list {
+    list-style: none; /* Removes the default browser bullet points */
+    padding-left: 0;
+  }
+
+  .services-list li {
+    padding-left: 1.2em; /* Creates space for the custom dot */
+    position: relative; /* Required for positioning the dot */
+    margin-bottom: 8px; /* Optional: Adds space between items */
+  }
+
+  .services-list li::before {
+    content: '•'; /* This is the custom dot character */
+    color: #000000; /* Change the dot color here */
+    font-size: 1.2em; /* Change the dot size here */
+    position: absolute;
+    left: 0;
+    top: -0.1em; /* Adjust vertical alignment of the dot */
+  }
