@@ -1,136 +1,1025 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Site Under Maintenance</title>
-  <style>
-    :root{
-      --bg:#0f1724; /* dark navy */
-      --card:#0b1220;
-      --muted:#9aa4b2;
-      --accent:#7dd3fc; /* bright cyan */
-      --glass: rgba(255,255,255,0.04);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    }
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      background: linear-gradient(180deg, #071021 0%, var(--bg) 100%);
-      color: #e6eef6;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:24px;
-    }
+  <head>
 
-    .card{
-      width:100%;
-      max-width:920px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border-radius:14px;
-      padding:36px;
-      box-shadow: 0 8px 30px rgba(2,6,23,0.6);
-      display:flex;
-      gap:28px;
-      align-items:center;
-    }
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    .left{
-      flex:0 0 160px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-    }
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
 
-    .gear{
-      width:108px;height:108px;
-      background:radial-gradient(circle at 30% 20%, rgba(125,211,252,0.12), transparent 30%);
-      border-radius:50%;
-      display:grid;
-      place-items:center;
-      box-shadow: inset 0 -6px 20px rgba(0,0,0,0.35), 0 6px 30px rgba(7,18,33,0.6);
-    }
+    <title>Home - Junk or Haul</title>
 
-    /* simple rotating gear using svg */
-    .gear svg{display:block; width:72px;height:72px; animation:spin 4s linear infinite}
-    @keyframes spin{from{transform:rotate(0)} to{transform:rotate(360deg)}}
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    .right{
-      flex:1 1 auto;
-      min-width:0;
-    }
 
-    h1{margin:0 0 8px 0; font-size:20px; letter-spacing: -0.02em}
-    p.lead{margin:0 0 14px 0; color:var(--muted); font-size:15px}
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-villa-agency.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+<!--
 
-    .meta{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:18px}
-    .chip{background:var(--glass); padding:8px 12px;border-radius:999px; color:var(--muted); font-size:13px}
+TemplateMo 591 villa agency
 
-    .actions{display:flex; gap:12px; align-items:center}
-    .btn{appearance:none;border:0;padding:10px 14px;border-radius:10px;font-weight:600;cursor:pointer}
-    .btn.primary{background:linear-gradient(90deg,var(--accent),#60a5fa); color:#042028}
-    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06); color:var(--accent)}
+https://templatemo.com/tm-591-villa-agency
 
-    small.note{display:block;margin-top:16px;color:var(--muted);font-size:13px}
+-->
+  </head>
 
-    /* responsive */
-    @media (max-width:640px){
-      .card{flex-direction:column; padding:22px}
-      .left{flex:0 0 auto}
-      .gear{width:88px;height:88px}
-      .gear svg{width:56px;height:56px}
-    }
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const observer = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("show");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+  
+      document.querySelectorAll(".fade-in").forEach(el => {
+        observer.observe(el);
+      });
+    });
+  </script>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const counters = document.querySelectorAll('.counter');
+  
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const counter = entry.target;
+            counter.classList.add('active');
+  
+            const countEl = counter.querySelector('.count-number');
+            const target = +countEl.getAttribute('data-to');
+            const speed = +countEl.getAttribute('data-speed');
+            let start = 0;
+            const step = Math.ceil(target / (speed / 1));
+  
+            const countUp = () => {
+              start += step;
+              if (start < target) {
+                countEl.textContent = start;
+                requestAnimationFrame(countUp);
+              } else {
+                countEl.textContent = target;
+              }
+            };
+  
+            // Add a delay based on position
+            const index = Array.from(counters).indexOf(counter);
+            setTimeout(() => countUp(), index * 200);
+  
+            observer.unobserve(counter);
+          }
+        });
+      }, { threshold: 0.5 });
+  
+      counters.forEach(counter => {
+        observer.observe(counter);
+      });
+    });
 
-  </style>
-</head>
+
+      
+  </script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const items = document.querySelectorAll('.item');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          const delay = index * 100; // 100ms stagger delay per item
+          setTimeout(() => {
+            entry.target.classList.add('show');
+          }, delay);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.2
+    });
+
+    items.forEach(item => observer.observe(item));
+  });
+</script>
+
+
+  
+  
 <body>
-  <main class="card" role="main" aria-labelledby="maint-heading">
-    <div class="left" aria-hidden="true">
-      <div class="gear" title="Maintenance in progress">
-        <!-- simple gear SVG -->
-        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <circle cx="32" cy="32" r="10" stroke="url(#g)" stroke-width="3" />
-          <g stroke="url(#g)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M32 6v6"/>
-            <path d="M32 52v6"/>
-            <path d="M6 32h6"/>
-            <path d="M52 32h6"/>
-            <path d="M14 14l4 4"/>
-            <path d="M46 46l4 4"/>
-            <path d="M14 50l4-4"/>
-            <path d="M46 18l4-4"/>
-          </g>
-          <defs>
-            <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#7dd3fc"/>
-              <stop offset="1" stop-color="#60a5fa"/>
-            </linearGradient>
-          </defs>
-        </svg>
+
+  <!-- ***** Preloader Start ***** -->
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
     </div>
+  </div>
+  <!-- ***** Preloader End ***** -->
 
-    <div class="right">
-      <h1 id="maint-heading">We'll be back soon</h1>
-      <p class="lead">Sorry for the inconvenience — we're performing some maintenance to improve the site. Thanks for your patience.</p>
-
-      <div class="meta">
-        <div class="chip" aria-hidden="true">Estimated downtime: ~30 minutes</div>
-        <div class="chip">Status: <strong style="margin-left:8px;color:var(--accent)">Maintenance</strong></div>
+  <div class="sub-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-8">
+          <ul class="info">
+            <li><i class="fa fa-phone"></i> (760) 804-3330</li>
+            <li><i class="fa fa-map"></i> We Service Temecula • Murrieta • Oceanside • San Diego • El Cajon</li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-4">
+          <ul class="social-links">
+            <!-- <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+            <li><a href="https://x.com/playboicarti" target="_blank"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+            <li><a href="#"><i class="fab fa-instagram"></i></a></li> -->
+          </ul>
+        </div>
       </div>
-
-      <div class="actions">
-        <button class="btn primary" onclick="location.reload()" aria-label="Reload page">Refresh</button>
-        <a class="btn ghost" href="/" role="button" aria-label="Go to homepage">Homepage</a>
-      </div>
-
-      <small class="note">If you need immediate assistance, email <a href="mailto:mahroos@backyardocean.com" style="color:var(--accent); text-decoration:none">mahroos@backyardocean.com</a>.</small>
     </div>
-  </main>
-</body>
+  </div>
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- ***** Logo Start ***** -->
+
+
+                    <a href="index.html" class="logo">
+                      <img src="assets/images/junkorhaul.png" alt="Junk or Haul" style="height: auto; max-height: 150px; width: auto; display: inline-block;">
+                    </a>
+                    
+                    
+                    
+                    <style>
+                    .ocean-wave-text {
+                      display: inline-block;
+                      font-weight: bold;
+                      font-size: 2.5rem;
+                      background: repeating-linear-gradient(
+                        -45deg,
+                        #007BFF 0%,
+                        #00bfff 10%,
+                        #ffffff 20%,
+                        #007BFF 30%,
+                        #00bfff 40%
+                      );
+                      background-size: 300% 300%;
+                      background-clip: text;
+                      -webkit-background-clip: text;
+                      color: transparent;
+                      -webkit-text-fill-color: transparent;
+                      animation: oceanWave 16s ease-in-out infinite;
+                    }
+                    
+                    @keyframes oceanWave {
+                      0% {
+                        background-position: 0% 50%;
+                      }
+                      50% {
+                        background-position: 100% 50%;
+                      }
+                      100% {
+                        background-position: 0% 50%;
+                      }
+                    }
+
+                    .fade-in {
+                      filter: blur(3px);
+                      transition: filter 1.2s ease, opacity 1.2s ease, transform 1.2s ease;
+                    }
+
+                    .fade-in.show {
+                      filter: blur(0);
+                    }
+
+                    /* Base styles */
+                    .counter {
+                      opacity: 0;
+                      transform: scale(0.8) translateY(50px);
+                      transition: 
+                        opacity 1s ease-out, 
+                        transform 1s cubic-bezier(0.22, 1, 0.36, 1),
+                        box-shadow 0.8s ease;
+                      will-change: transform, opacity;
+                    }
+
+                    .counter.active {
+                      opacity: 1;
+                      transform: scale(1) translateY(0);
+                      box-shadow: 0 0 20px rgba(0, 255, 153, 0.15);
+                    }
+
+                    /* Optional pulse glow effect */
+                    .counter.active h2 {
+                      animation: pulse 2s infinite ease-in-out;
+                    }
+
+                    @keyframes pulse {
+                      0%, 100% {
+                        text-shadow: 0 0 0px #00ffc3;
+                      }
+                      50% {
+                        text-shadow: 0 0 10px #00ffc3, 0 0 30px #00ffc3;
+                      }
+                    }
+
+                    /* Animate each service card */
+                    .item {
+                      opacity: 0;
+                      transform: translateY(60px) scale(0.95);
+                      transition: 
+                        opacity 0.8s ease-out,
+                        transform 0.8s ease-out;
+                      will-change: opacity, transform;
+                    }
+
+                    .item.show {
+                      opacity: 1;
+                      transform: translateY(0) scale(1);
+                    }
+
+
+
+
+                    </style>
+                    
+                    
+                    
+
+
+                    
+
+                    <!-- ***** Logo End ***** -->
+                    <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+                      <li><a href="index.html" class="active">Home</a></li>
+                      <!-- <li><a href="properties.html">Properties</a></li> -->
+                      <!-- <li><a href="property-details.html">Property Details</a></li> -->
+                      <!-- <li><a href="contact.html">Contact Us</a></li> -->
+                      <li><a href="http://Calendly.com/backyardocean"><i class="fa fa-calendar"></i> Contact Us</a></li>
+                  </ul>   
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                    <!-- ***** Menu End ***** -->
+                </nav>
+            </div>
+        </div>
+    </div>
+  </header>
+  <!-- ***** Header Area End ***** -->
+
+  <div class="main-banner">
+    
+      <div class="item item-1">
+        <div class="header-text">
+          <span class="category">A <em>San Diego</em> Local Business</span>
+          <h4 style="color: white;">On time on call...</h4>
+
+          <h2>We Clear <br>it all</h2>
+        </div>
+      </div>
+      <!-- <div class="item item-2">
+        <div class="header-text">
+          <span class="category">Oceanside, <em>California</em></span>
+          <h2>Global Reach,<br>Local Expertise</h2>
+        </div>
+      </div>
+      <div class="item item-3">
+        <div class="header-text">
+          <span class="category">San Marcos, <em>California</em></span>
+          <h2>Discover architectural<br>splendor</h2>
+        </div>
+      </div> -->
+    </div>
+  </div>
+
+
+
+  <!-- Add scrolling text -->
+  <!-- <div class="scrolling-text">
+    <div class="text-track">
+      <span>Discover &nbsp;the &nbsp;Pinnacle &nbsp;of &nbsp;Real &nbsp;Estate &nbsp;Excellence &nbsp;</span>
+    </div>
+  </div>
+  
+  <style>
+  .scrolling-text {
+    width: 100%;
+    overflow: hidden;
+    
+    padding: 1rem 0;
+    background: transparent;
+  }
+  
+  .text-track {
+    display: inline-block;
+    white-space: nowrap;
+    animation: scroll-left 25s linear infinite;
+  }
+  
+  .text-track span {
+    font-size: 6rem;
+    font-weight: bold;
+    color: black;
+    display: inline-block;
+  }
+  
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  </style> -->
+  
+  <!-- End scrolling text -->
+
+
+  <!-- <div class="featured section">
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="left-image">
+            <img src="assets/images/featured.jpg" alt="">
+            <a href="property-details.html"><img src="assets/images/featured-icon.png" alt="" style="max-width: 60px; padding: 0px;"></a>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <div class="section-heading">
+            <h6>| Featured</h6>
+            <h2>Best Appartment &amp; Sea view</h2>
+          </div>
+          <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Our Process
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  From <strong>first contact</strong> to keys in hand, our process is seamless, strategic, and <strong>tailored to you.</strong> <br> We start by understanding your goals and preferences, then present <strong>carefully curated properties</strong>, guide you through private showings, handle negotiations, and oversee every detail through closing and beyond.</div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  Meet the Team
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <strong>Mahroos</strong>
+                  <br>
+                  Founder & Lead architect. Passionate about luxury space.
+                  <br>
+                  <br>
+                  <strong>Mr. Uncle</strong>
+
+                  <br>
+                  Senior Adviser and lover of cricket.
+
+
+
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  FAQs
+                </button>
+              </h2>
+              <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <dt><strong>How do you find exclusive off-market properties?</strong></dt>
+                  <dd>We leverage deep industry connections and proprietary networks to access listings before they hit the public market.</dd>
+
+                  <dt><strong>What makes your service hands-free?</strong></dt>
+                  <dd>From curated selections to closing coordination, we manage every step so you can focus on what matters most.</dd>
+
+                  <dt><strong>Can you assist with financing and legal processes?</strong></dt>
+                  <dd>Absolutely. We work closely with trusted partners to provide guidance throughout financing, inspections, and legal reviews.</dd>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="info-table">
+            <ul>
+              <li>
+                <img src="assets/images/info-icon-01.png" alt="" style="max-width: 52px;">
+                <h4>250 m2<br><span>Total Flat Space</span></h4>
+              </li>
+              <li>
+                <img src="assets/images/info-icon-02.png" alt="" style="max-width: 52px;">
+                <h4>Contract<br><span>Contract Ready</span></h4>
+              </li>
+              <li>
+                <img src="assets/images/info-icon-03.png" alt="" style="max-width: 52px;">
+                <h4>Payment<br><span>Payment Process</span></h4>
+              </li>
+              <li>
+                <img src="assets/images/info-icon-04.png" alt="" style="max-width: 52px;">
+                <h4>Safety<br><span>24/7 Under Control</span></h4>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- <div class="video section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 offset-lg-4">
+          <div class="section-heading text-center">
+            <h6>| Video View</h6>
+            <h2>Get Closer View & Different Feeling</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="video-content">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 offset-lg-1">
+          <div class="video-frame">
+            <img src="assets/images/video-frame.jpg" alt="">
+            <a href="https://youtube.com" target="_blank"><i class="fa fa-play"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+      <div class="section best-deal fade-in" id="best-deal-section">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="section-heading" style="margin-bottom: 150px;">
+                <h6>| One Stop Shop</h6>
+                <h2>Your Complete Junk Removal and Hauling Solution!</h2>
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <div class="tabs-content">
+                <div class="row">
+                  <div class="nav-wrapper">
+                    <ul class="nav nav-tabs" role="tablist">
+                      <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="airports-tab" data-bs-toggle="tab" data-bs-target="#airports" type="button" role="tab" aria-controls="airports" aria-selected="true">Residential Cleanouts</button>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="restaurants-tab" data-bs-toggle="tab" data-bs-target="#restaurants" type="button" role="tab" aria-controls="restaurants" aria-selected="false">Construction Debris</button>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="clubs-tab" data-bs-toggle="tab" data-bs-target="#clubs" type="button" role="tab" aria-controls="clubs" aria-selected="false">Furniture Removal</button>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="schools-tab" data-bs-toggle="tab" data-bs-target="#schools" type="button" role="tab" aria-controls="schools" aria-selected="false">Commercial Cleanouts</button>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tab-content" id="myTabContent">
+      
+                    <!-- Airports -->
+                    <div class="tab-pane fade show active" id="airports" role="tabpanel" aria-labelledby="airports-tab">
+                      <div class="row align-items-center">
+                        <div class="col-lg-6">
+                          <img src="assets/images/airport.png" alt="Airport Maintenance">
+                        </div>
+                        <div class="col-lg-6">
+                          <h4>Residential</h4>
+                          <p>Professional, eco-conscious service tailored for residential and commercial needs.</p>
+                          <div class="icon-button">
+                            <a href="http://calendly.com/backyardocean"><i class="fa fa-calendar"></i> Request a Quote</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+      
+                    <!-- Restaurants -->
+                    <div class="tab-pane fade" id="restaurants" role="tabpanel" aria-labelledby="restaurants-tab">
+                      <div class="row align-items-center">
+                        <div class="col-lg-6">
+                          <img src="assets/images/resturaunt.png" alt="Restaurant Maintenance">
+                        </div>
+                        <div class="col-lg-6">
+                          <h4>Restaurant Cleaning Services</h4>
+                          <p>We specialize in food-safe sanitation for front- and back-of-house spaces. Our services include degreasing, restroom sterilization, floor care, and odor control to keep your restaurant clean, compliant, and inviting.</p>
+                          <div class="icon-button">
+                            <a href="http://calendly.com/backyardocean"><i class="fa fa-calendar"></i> Schedule a Walkthrough</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+      
+                    <!-- Clubs -->
+                    <div class="tab-pane fade" id="clubs" role="tabpanel" aria-labelledby="clubs-tab">
+                      <div class="row align-items-center">
+                        <div class="col-lg-6">
+                          <img src="assets/images/club.png" alt="Club Cleaning">
+                        </div>
+                        <div class="col-lg-6">
+                          <h4>Nightlife & Club Maintenance</h4>
+                          <p>Keep your venue fresh, safe, and guest-ready with our specialized cleaning for clubs and lounges. From sticky floors to smudged mirrors, we handle the mess so your guests only notice the vibe—not the spills.</p>
+                          <div class="icon-button">
+                            <a href="http://calendly.com/backyardocean"><i class="fa fa-calendar"></i> Book Nightly Service</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+      
+                    <!-- Schools -->
+                    <div class="tab-pane fade" id="schools" role="tabpanel" aria-labelledby="schools-tab">
+                      <div class="row align-items-center">
+                        <div class="col-lg-6">
+                          <img src="assets/images/school.png" alt="School Cleaning">
+                        </div>
+                        <div class="col-lg-6">
+                          <h4>Educational Facility Cleaning</h4>
+                          <p>Our school cleaning services promote a healthy learning environment. We focus on classrooms, gyms, cafeterias, and restrooms with disinfection routines that reduce the spread of illness and keep attendance high.</p>
+                          <div class="icon-button">
+                            <a href="http://calendly.com/backyardocean"><i class="fa fa-calendar"></i> Get a Proposal</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+      
+                  </div> <!-- tab-content -->
+                </div> <!-- row -->
+              </div> <!-- tabs-content -->
+            </div> <!-- col-lg-12 -->
+          </div> <!-- row -->
+        </div> <!-- container -->
+      </div> <!-- section -->
+  
+  
+
+
+
+
+  <div class="fun-facts">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="wrapper">
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="counter">
+                  <h2 class="timer count-title count-number" data-to="34" data-speed="1000"></h2>
+                   <p class="count-text ">Buildings<br>Finished Now</p>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="counter">
+                  <h2 class="timer count-title count-number" data-to="12" data-speed="1000"></h2>
+                  <p class="count-text ">Years<br>Experience</p>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="counter">
+                  <h2 class="timer count-title count-number" data-to="24" data-speed="1000"></h2>
+                  <p class="count-text ">Awards<br>Won 2025</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> 
+
+
+
+
+
+ <div class="properties section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 offset-lg-4">
+          <div class="section-heading text-center">
+            <h6>| Services</h6>
+            <h2>Discover our expertise the way <i>you</i> need it</h2>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 col-md-6">
+          <div class="item">
+            <a href="property-details.html"><img src="assets/images/janitor.png" alt=""></a>
+            <span class="category">Premium Service</span>
+            <!-- <h6>Free Estimate Available</h6> -->
+            <h4><a href="property-details.html">Janitorial Cleaning</a></h4>
+
+
+
+
+            <!-- Your HTML list with the new class -->
+            <ul class="services-list">
+              <li>Deep Carpet Steam Cleaning</li>
+              <li>Spot &amp; Stain Removal</li>
+              <li>High-Traffic Area Restoration</li>
+              <li>Odor Elimination &amp; Deodorizing</li>
+              <li>Pet Stain &amp; Allergen Treatment</li>
+              <li>Fast Drying with Low-Moisture Methods</li>
+            </ul>
+            
+
+            <div class="main-button">
+              <a href="https://calendly.com/backyardocean">Get a Quote</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="item">
+            <a href="property-details.html"><img src="assets/images/floor.png" alt=""></a>
+            <span class="category">Highly Rated</span>
+            <!-- <h6>$1.180.000</h6> -->
+            <h4><a href="property-details.html">Floor Detailing</a></h4>
+
+            <ul class="services-list">
+              <li>Hardwood Floor Sanding &amp; Refinishing</li>
+              <li>Vinyl &amp; Linoleum Stripping and Waxing</li>
+              <li>Deep Carpet &amp; Upholstery Cleaning</li>
+              <li>Grout &amp; Tile Steam Cleaning</li>
+              <li>Concrete Grinding &amp; Polishing</li>
+              <li>High-Speed Buffing &amp; Burnishing</li>
+            </ul>
+
+            <div class="main-button">
+              <a href="https://calendly.com/backyardocean">Get a Quote</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="item">
+            <a href="property-details.html"><img src="assets/images/upholstery.png" alt=""></a>
+            <span class="category">Premium Service</span>
+            <!-- <h6>$1.460.000</h6> -->
+            <h4><a href="property-details.html">Upholstery Cleaning</a></h4>
+            <ul class="services-list">
+              <li>Fabric &amp; Leather Sofa Deep Cleaning</li>
+              <li>Office Chair &amp; Cubicle Panel Cleaning</li>
+              <li>Stain and Spot Removal Treatment</li>
+              <li>Odor Elimination &amp; Deodorization</li>
+              <li>Fabric Protector &amp; Scotchgard™ Application</li>
+              <li>Mattress Cleaning &amp; Sanitization</li>
+            </ul>
+            <div class="main-button">
+              <a href="https://calendly.com/backyardocean">Get a Quote</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="item">
+            <a href="property-details.html"><img src="assets/images/carpet.png" alt=""></a>
+            <span class="category">Highly Rated</span>
+            <!-- <h6>$584.500</h6> -->
+            <h4><a href="property-details.html">Carpet Steam Cleaning</a></h4>
+            <ul class="services-list">
+              <li>Deep Carpet Steam Cleaning</li>
+              <li>Stain & Spot Treatment</li>
+              <li>Odor Neutralization</li>
+              <li>High-Traffic Area Restoration</li>
+              <li>Pet Stain & Allergen Removal</li>
+              <li>Eco-Friendly Cleaning Solutions</li>
+            </ul>
+            
+            <div class="main-button">
+              <a href="https://calendly.com/backyardocean">Get a Quote</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="item">
+            <a href="property-details.html"><img src="assets/images/powerwash.png" alt=""></a>
+            <span class="category">Top Rated</span>
+            <!-- <h6>$925.600</h6> -->
+            <h4><a href="property-details.html">Powerwash</a></h4>
+            <ul class="services-list">
+              <li>Exterior Surface Power Washing</li>
+              <li>Driveway &amp; Sidewalk Cleaning</li>
+              <li>Patio &amp; Deck Restoration</li>
+              <li>Roof &amp; Gutter Debris Removal</li>
+              <li>Fence &amp; Wall Pressure Cleaning</li>
+              <li>Graffiti &amp; Stain Removal</li>
+            </ul>
+            
+            <div class="main-button">
+              <a href="https://calendly.com/backyardocean">Get a Quote</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="item">
+            <a href="property-details.html"><img src="assets/images/handyman.png" alt=""></a>
+            <span class="category">Top Rated</span>
+            <!-- <h6>$925.600</h6> -->
+            <h4><a href="property-details.html">Light Handyman Services</a></h4>
+            <ul class="services-list">
+              <li>Minor Drywall Repairs &amp; Patching</li>
+              <li>Furniture Assembly</li>
+              <li>TV Mounting &amp; Wall Hanging</li>
+              <li>Light Fixture Installation</li>
+              <li>Door &amp; Cabinet Adjustments</li>
+              <li>Caulking &amp; Weatherstripping</li>
+              <li>Shelf &amp; Mirror Installation</li>
+            </ul>
+            
+            <div class="main-button">
+              <a href="https://calendly.com/backyardocean">Get a Quote</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="item">
+            <a href="property-details.html"><img src="assets/images/hvac.png" alt=""></a>
+            <span class="category">Premium Service</span>
+            <!-- <h6>$925.600</h6> -->
+            <h4><a href="property-details.html">HVAC Maintenance</a></h4>
+            <ul class="services-list">
+              <li>HVAC System Inspection &amp; Diagnostics</li>
+              <li>Filter Replacement &amp; Cleaning</li>
+              <li>Thermostat Calibration &amp; Testing</li>
+              <li>Air Duct Cleaning &amp; Sanitization</li>
+              <!-- <li>Coil &amp; Condenser Maintenance</li> -->
+              <li>Refrigerant Level Check &amp; Recharge</li>
+              <li>Blower Motor &amp; Fan Testing</li>
+            </ul>
+            
+            <div class="main-button">
+              <a href="https://calendly.com/backyardocean">Get a Quote</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="item">
+            <a href="property-details.html"><img src="assets/images/electrical.png" alt=""></a>
+            <span class="category">Quick Turnaround</span>
+            <!-- <h6>$925.600</h6> -->
+            <h4><a href="property-details.html">Electrical Repairs</a></h4>
+            <ul class="services-list">
+              <li>Electrical Troubleshooting &amp; Diagnostics</li>
+              <li>Outlet &amp; Switch Replacement</li>
+              <li>Lighting Installation &amp; Repairs</li>
+              <li>Panel Upgrades &amp; Circuit Breaker Replacement</li>
+              <li>Wiring &amp; Rewiring Services</li>
+              <!-- <li>Ceiling Fan Installation</li> -->
+              <li>Emergency Electrical Repairs</li>
+            </ul>
+            
+            <div class="main-button">
+              <a href="https://calendly.com/backyardocean">Get a Quote</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="item">
+            <a href="property-details.html"><img src="assets/images/window.png" alt=""></a>
+            <span class="category">Top Rated</span>
+            <!-- <h6>$925.600</h6> -->
+            <h4><a href="property-details.html">Window Cleaning</a></h4>
+            <ul class="services-list">
+              <li>Interior &amp; Exterior Window Washing</li>
+              <li>Glass &amp; Mirror Polishing</li>
+              <li>Streak-Free Detailing</li>
+              <li>Screen Removal &amp; Cleaning</li>
+              <li>Track &amp; Frame Wipe-Down</li>
+              <li>Hard Water Stain Removal</li>
+            </ul>
+            
+            <div class="main-button">
+              <a href="https://calendly.com/backyardocean">Get a Quote</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="item">
+            <a href="property-details.html"><img src="assets/images/drywall.png" alt=""></a>
+            <span class="category">Premium Service</span>
+            <!-- <h6>$925.600</h6> -->
+            <h4><a href="property-details.html">Drywall Services</a></h4>
+            <ul class="services-list">
+              <li>Drywall Installation &amp; Hanging</li>
+              <li>Taping &amp; Mudding</li>
+              <li>Drywall Repair &amp; Patching</li>
+              <li>Texturing &amp; Finishing</li>
+              <li>Ceiling Drywall Services</li>
+              <li>Soundproof &amp; Fire-Resistant Drywall</li>
+            </ul>
+            
+            <div class="main-button">
+              <a href="https://calendly.com/backyardocean">Get a Quote</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="item">
+            <a href="property-details.html"><img src="assets/images/plumbing.png" alt=""></a>
+            <span class="category">Top Rated</span>
+            <!-- <h6>$925.600</h6> -->
+            <h4><a href="property-details.html">Light Plumbing</a></h4>
+            <ul class="services-list">
+              <li>Leak Detection &amp; Repair</li>
+              <li>Faucet &amp; Fixture Installation</li>
+              <li>Toilet Repair &amp; Replacement</li>
+              <li>Drain Cleaning &amp; Unclogging</li>
+              <li>Water Line Maintenance</li>
+              <li>Garbage Disposal Service</li>
+            </ul>
+            
+            <div class="main-button">
+              <a href="https://calendly.com/backyardocean">Get a Quote</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="item">
+            <a href="property-details.html"><img src="assets/images/painting.png" alt=""></a>
+            <span class="category">Premium Service</span>
+            <!-- <h6>$450.000</h6> -->
+            <h4><a href="property-details.html">Painting</a></h4>
+            <ul class="services-list">
+              <li>Interior Wall & Ceiling Painting</li>
+              <li>Exterior Painting & Weatherproofing</li>
+              <li>Drywall Repair & Surface Preparation</li>
+              <li>Trim, Baseboard & Molding Painting</li>
+              <li>Fence, Deck & Outdoor Structure Coating</li>
+              <li>Eco-Friendly & Low-VOC Paint Options</li>
+            </ul>
+            
+            <div class="main-button">
+              <a href="https://calendly.com/backyardocean">Get a Quote</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> 
+
+  
+
+  
+
+  <div class="contact section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 offset-lg-4">
+          <div class="section-heading text-center">
+            <h6>| Contact Us</h6>
+            <h2>Get In Touch With Our Agents</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-content">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7">
+          <div id="map">
+
+            <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3344.2827422665536!2d-117.33980138456603!3d33.17635568086564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dc7052584e59e7%3A0xf24d2cf12a5186b5!2s2204%20S%20El%20Camino%20Real%2C%20Oceanside%2C%20CA%2092054!5e0!3m2!1sen!2sus!4v1718823864006!5m2!1sen!2sus" 
+            width="100%" 
+            height="500px" 
+            frameborder="0" 
+            style="border:0; border-radius: 10px; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+
+
+          </div>
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="item phone">
+                <img src="assets/images/phone-icon.png" alt="" style="max-width: 52px;">
+                <h6 style="font-size: 20px;">+1 (760) 846-5105<br><span style="font-size: 14x;">Phone Number</span></h6>
+
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="item email">
+                <img src="assets/images/email-icon.png" alt="" style="max-width: 52px;">
+                <h6 style="font-size: 16px;">mahroos@backyardocean.llc<br><span style="font-size: 14px;">Business Email</span></h6>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <div class="col-lg-5">
+          <form id="contact-form" action="https://formsubmit.co/youremail@example.com" method="POST">
+            <!-- Hidden settings for Formsubmit -->
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_subject" value="New Contact Form Submission">
+            <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
+            
+            <div class="row">
+              <div class="col-lg-12">
+                <fieldset>
+                  <label for="name">Full Name</label>
+                  <input type="text" name="name" id="name" placeholder="Your Name..." autocomplete="on" required>
+                </fieldset>
+              </div>
+              <div class="col-lg-12">
+                <fieldset>
+                  <label for="email">Email Address</label>
+                  <input type="email" name="email" id="email" placeholder="Your E-mail..." required>
+                </fieldset>
+              </div>
+              <div class="col-lg-12">
+                <fieldset>
+                  <label for="subject">Subject</label>
+                  <input type="text" name="subject" id="subject" placeholder="Subject..." autocomplete="on">
+                </fieldset>
+              </div>
+              <div class="col-lg-12">
+                <fieldset>
+                  <label for="message">Message</label>
+                  <textarea name="message" id="message" placeholder="Your Message" required></textarea>
+                </fieldset>
+              </div>
+              <div class="col-lg-12">
+                <fieldset>
+                  <button type="submit" id="form-submit" class="orange-button">Send Message</button>
+                </fieldset>
+              </div>
+            </div>
+          </form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="col-lg-8">
+        <p>Copyright @ Backyard Ocean, LLC. All rights reserved. 
+        
+        <!-- Design: <a rel="nofollow" href="https://templatemo.com" target="_blank">Maher Hasan</a> -->
+      </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/js/isotope.min.js"></script>
+  <script src="assets/js/owl-carousel.js"></script>
+  <script src="assets/js/counter.js"></script>
+  <script src="assets/js/custom.js"></script>
+
+  </body>
 </html>
