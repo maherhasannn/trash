@@ -121,6 +121,93 @@ https://templatemo.com/tm-591-villa-agency
   
 <body>
 
+<!-- Chatbot HTML -->
+<div id="chatWidget">
+  <button id="chatToggle">💬</button>
+  <div id="chatBox">
+    <div id="chatHeader">Junk or Haul Assistant</div>
+    <div id="chatContent">
+      <div class="gemini bubble">Hi! 👋 How can I help you today? Click a question below.</div>
+    </div>
+    <div id="chatInputContainer">
+      <input type="text" id="chatInput" placeholder="Type your question..." disabled>
+      <button id="sendChat" disabled>Send</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  #chatWidget { position: fixed; bottom: 20px; right: 20px; z-index: 9999; font-family: 'Poppins', sans-serif; }
+  #chatToggle { background:#4CAF50; color:white; border:none; border-radius:50%; width:60px; height:60px; font-size:24px; cursor:pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.2);}
+  #chatBox { display:none; width:320px; max-height:500px; background:white; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.2); overflow:hidden; display:flex; flex-direction:column; }
+  #chatHeader { background:#4CAF50; color:white; padding:12px; font-weight:bold; }
+  #chatContent { flex:1; padding:10px; overflow-y:auto; background:#f9f9f9; display:flex; flex-direction:column; gap:5px; }
+  #chatInputContainer { display:flex; border-top:1px solid #ccc; }
+  #chatInput { flex:1; padding:8px; border:none; outline:none; }
+  #sendChat { background:#4CAF50; color:white; border:none; padding:5px 12px; cursor:pointer; }
+  .bubble { padding:10px 14px; border-radius:15px; max-width:80%; margin:5px 0; }
+  .user { background:#4CAF50; color:white; align-self:flex-end; }
+  .gemini { background:#e0e0e0; color:black; align-self:flex-start; }
+  .faq-btn { background:#f0f0f0; border:none; padding:6px 10px; border-radius:12px; cursor:pointer; margin-top:5px; transition: 0.2s; }
+  .faq-btn:hover { background:#ddd; }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const chatToggle = document.getElementById('chatToggle');
+    const chatBox = document.getElementById('chatBox');
+    const chatContent = document.getElementById('chatContent');
+
+    const faqs = [
+      { q: "What areas do you service?", a: "We service Temecula, Murrieta, Oceanside, San Diego, and El Cajon." },
+      { q: "Do you recycle items?", a: "Absolutely! We sort items to recycle, donate, or dispose of responsibly." },
+      { q: "How fast is same-day service?", a: "Our same-day service is available depending on availability. Call for details!" },
+      { q: "Do you remove furniture and appliances?", a: "Yes! We safely remove all types of furniture and appliances." }
+    ];
+
+    function addMessage(msg, sender="gemini") {
+      const bubble = document.createElement("div");
+      bubble.className = sender + " bubble";
+      bubble.innerHTML = msg;
+      chatContent.appendChild(bubble);
+      chatContent.scrollTop = chatContent.scrollHeight;
+    }
+
+    function showFAQs() {
+      faqs.forEach(faq => {
+        const btn = document.createElement("button");
+        btn.className = "faq-btn";
+        btn.textContent = faq.q;
+        btn.addEventListener("click", () => {
+          addMessage(faq.q, "user");
+          setTimeout(() => addMessage(faq.a, "gemini"), 600); // artificial delay
+        });
+        chatContent.appendChild(btn);
+      });
+    }
+
+    chatToggle.addEventListener("click", () => {
+      chatBox.style.display = chatBox.style.display === "flex" ? "none" : "flex";
+      if (chatBox.style.display === "flex" && !chatContent.querySelector(".faq-btn")) {
+        setTimeout(showFAQs, 300); // slight delay to mimic thinking
+      }
+    });
+  });
+</script>
+
+
+
+
+
+
+
+
+</script>
+
+ 
+</script>
+
+
   <!-- ***** Preloader Start ***** -->
   <div id="js-preloader" class="js-preloader">
     <div class="preloader-inner">
@@ -171,6 +258,20 @@ https://templatemo.com/tm-591-villa-agency
                     
                     
                     <style>
+
+#chatWidget { position: fixed; bottom: 20px; right: 20px; z-index: 9999; }
+#chatToggle { background:#4CAF50; color:white; border:none; border-radius:50%; width:60px; height:60px; font-size:24px; cursor:pointer; }
+#chatBox { display:none; width:300px; height:400px; background:white; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.2); overflow:hidden; flex-direction:column; }
+#chatHeader { background:#4CAF50; color:white; padding:10px; font-weight:bold; }
+#chatContent { flex:1; padding:10px; overflow-y:auto; background:#f9f9f9; }
+#chatInputContainer { display:flex; border-top:1px solid #ccc; }
+#chatInput { flex:1; padding:5px; border:none; }
+#sendChat { background:#4CAF50; color:white; border:none; padding:5px 10px; cursor:pointer; }
+.bubble { padding:8px 12px; border-radius:15px; max-width:70%; margin:5px 0; }
+.user { background:#4CAF50; color:white; align-self:flex-end; }
+.gemini { background:#e0e0e0; color:black; align-self:flex-start; }
+
+
                     .ocean-wave-text {
                       display: inline-block;
                       font-weight: bold;
@@ -273,10 +374,10 @@ https://templatemo.com/tm-591-villa-agency
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
                       <li><a href="index.html" class="active">Home</a></li>
-                      <!-- <li><a href="properties.html">Properties</a></li> -->
-                      <!-- <li><a href="property-details.html">Property Details</a></li> -->
-                      <!-- <li><a href="contact.html">Contact Us</a></li> -->
-                      <li><a href="http://Calendly.com/backyardocean"><i class="fa fa-calendar"></i> Contact Us</a></li>
+                      <li><a href="">About Us</a></li> 
+                      <li><a href="">Contact</a></li> 
+                      <li><a href="">Service</a></li>
+                      <li><a href=""><i class="fa fa-calendar"></i> Contact Us</a></li>
                   </ul>   
                     <a class='menu-trigger'>
                         <span>Menu</span>
@@ -522,9 +623,9 @@ https://templatemo.com/tm-591-villa-agency
                         </div>
                         <div class="col-lg-6">
                           <h4>Residential</h4>
-                          <p>Professional, eco-conscious service tailored for residential and commercial needs.</p>
+                          <p>Providing professional, eco-conscious junk removal and hauling services, tailored to meet the unique needs of both residential and commercial clients. Our team ensures safe, efficient, and sustainable solutions for every project, no matter the size.</p>
                           <div class="icon-button">
-                            <a href="http://calendly.com/backyardocean"><i class="fa fa-calendar"></i> Request a Quote</a>
+                            <a href=""><i class="fa fa-calendar"></i> Request a Quote</a>
                           </div>
                         </div>
                       </div>
@@ -540,7 +641,7 @@ https://templatemo.com/tm-591-villa-agency
                           <h4>Restaurant Cleaning Services</h4>
                           <p>We specialize in food-safe sanitation for front- and back-of-house spaces. Our services include degreasing, restroom sterilization, floor care, and odor control to keep your restaurant clean, compliant, and inviting.</p>
                           <div class="icon-button">
-                            <a href="http://calendly.com/backyardocean"><i class="fa fa-calendar"></i> Schedule a Walkthrough</a>
+                            <a href=""><i class="fa fa-calendar"></i> Schedule a Walkthrough</a>
                           </div>
                         </div>
                       </div>
@@ -556,7 +657,7 @@ https://templatemo.com/tm-591-villa-agency
                           <h4>Nightlife & Club Maintenance</h4>
                           <p>Keep your venue fresh, safe, and guest-ready with our specialized cleaning for clubs and lounges. From sticky floors to smudged mirrors, we handle the mess so your guests only notice the vibe—not the spills.</p>
                           <div class="icon-button">
-                            <a href="http://calendly.com/backyardocean"><i class="fa fa-calendar"></i> Book Nightly Service</a>
+                            <a href=""><i class="fa fa-calendar"></i> Book Nightly Service</a>
                           </div>
                         </div>
                       </div>
@@ -572,7 +673,7 @@ https://templatemo.com/tm-591-villa-agency
                           <h4>Educational Facility Cleaning</h4>
                           <p>Our school cleaning services promote a healthy learning environment. We focus on classrooms, gyms, cafeterias, and restrooms with disinfection routines that reduce the spread of illness and keep attendance high.</p>
                           <div class="icon-button">
-                            <a href="http://calendly.com/backyardocean"><i class="fa fa-calendar"></i> Get a Proposal</a>
+                            <a href=""><i class="fa fa-calendar"></i> Get a Proposal</a>
                           </div>
                         </div>
                       </div>
@@ -591,36 +692,50 @@ https://templatemo.com/tm-591-villa-agency
 
 
 
-  <div class="fun-facts">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="wrapper">
-            <div class="row">
-              <div class="col-lg-4">
-                <div class="counter">
-                  <h2 class="timer count-title count-number" data-to="34" data-speed="1000"></h2>
-                   <p class="count-text ">Buildings<br>Finished Now</p>
-                </div>
-              </div>
-              <div class="col-lg-4">
-                <div class="counter">
-                  <h2 class="timer count-title count-number" data-to="12" data-speed="1000"></h2>
-                  <p class="count-text ">Years<br>Experience</p>
-                </div>
-              </div>
-              <div class="col-lg-4">
-                <div class="counter">
-                  <h2 class="timer count-title count-number" data-to="24" data-speed="1000"></h2>
-                  <p class="count-text ">Awards<br>Won 2025</p>
-                </div>
-              </div>
+      <div class="why-us" style="background-color: #f8f8f8; padding: 60px 0;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto;">
+          <div class="row" style="text-align: center; margin-bottom: 40px;">
+            <div class="col-lg-12">
+              <h2 style="font-size: 36px; margin-bottom: 10px;">Why Us?</h2>
+              <p style="font-size: 18px; color: #555;">Discover why we are the best choice for your junk removal needs</p>
             </div>
+          </div>
+          <div class="row" style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center;">
+            
+            <div class="col-lg-4" style="background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); flex: 1 1 300px;">
+              <h3 style="font-size: 24px; margin-bottom: 15px;">We Got the Tools</h3>
+              <p style="color: #555;">Equipped with the right gear and expertise to handle any junk removal job safely and efficiently.</p>
+            </div>
+      
+            <div class="col-lg-4" style="background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); flex: 1 1 300px;">
+              <h3 style="font-size: 24px; margin-bottom: 15px;">Certified Experience</h3>
+              <p style="color: #555;">Trusted professionals with proven expertise and industry-standard certifications to get the job done right.</p>
+            </div>
+      
+            <div class="col-lg-4" style="background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); flex: 1 1 300px;">
+              <h3 style="font-size: 24px; margin-bottom: 15px;">Competitive Pricing</h3>
+              <p style="color: #555;">Affordable rates without compromising quality—junk removal that fits your budget.</p>
+            </div>
+      
+            <div class="col-lg-4" style="background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); flex: 1 1 300px;">
+              <h3 style="font-size: 24px; margin-bottom: 15px;">Customer Satisfaction First</h3>
+              <p style="color: #555;">We go above and beyond to make sure you’re 100% satisfied—just check our reviews!</p>
+            </div>
+      
+            <div class="col-lg-4" style="background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); flex: 1 1 300px;">
+              <h3 style="font-size: 24px; margin-bottom: 15px;">Eco-Friendly Disposal</h3>
+              <p style="color: #555;">Committed to sustainability with responsible sorting, recycling, and donation practices.</p>
+            </div>
+      
+            <div class="col-lg-4" style="background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); flex: 1 1 300px;">
+              <h3 style="font-size: 24px; margin-bottom: 15px;">Service Built Around You</h3>
+              <p style="color: #555;">Flexible scheduling, clear communication, and tailored solutions to fit your unique needs.</p>
+            </div>
+      
           </div>
         </div>
       </div>
-    </div>
-  </div> 
+      
 
 
 
@@ -642,7 +757,7 @@ https://templatemo.com/tm-591-villa-agency
             <a href="property-details.html"><img src="assets/images/janitor.png" alt=""></a>
             <span class="category">Premium Service</span>
             <!-- <h6>Free Estimate Available</h6> -->
-            <h4><a href="property-details.html">Janitorial Cleaning</a></h4>
+            <h4><a href="property-details.html">Appliance Removal</a></h4>
 
 
 
@@ -659,28 +774,30 @@ https://templatemo.com/tm-591-villa-agency
             
 
             <div class="main-button">
-              <a href="https://calendly.com/backyardocean">Get a Quote</a>
+              <a href="services/appliance-removal.html">Learn More</a>
             </div>
           </div>
         </div>
+
+
         <div class="col-lg-4 col-md-6">
           <div class="item">
             <a href="property-details.html"><img src="assets/images/floor.png" alt=""></a>
             <span class="category">Highly Rated</span>
             <!-- <h6>$1.180.000</h6> -->
-            <h4><a href="property-details.html">Floor Detailing</a></h4>
+            <h4><a href="property-details.html">Furniture Removal</a></h4>
 
             <ul class="services-list">
-              <li>Hardwood Floor Sanding &amp; Refinishing</li>
-              <li>Vinyl &amp; Linoleum Stripping and Waxing</li>
-              <li>Deep Carpet &amp; Upholstery Cleaning</li>
-              <li>Grout &amp; Tile Steam Cleaning</li>
-              <li>Concrete Grinding &amp; Polishing</li>
-              <li>High-Speed Buffing &amp; Burnishing</li>
+              <li>Refrigerator Removal & Recycling</li>
+              <li>Washing Machine & Dryer Disposal</li>
+              <li>Oven & Stove Pickup</li>
+              <li>Dishwasher Removal</li>
+              <li>Microwave & Small Appliance Disposal</li>
+              <li>Eco-Friendly Appliance Recycling</li>
             </ul>
 
             <div class="main-button">
-              <a href="https://calendly.com/backyardocean">Get a Quote</a>
+              <a href="">Get a Quote</a>
             </div>
           </div>
         </div>
@@ -689,17 +806,17 @@ https://templatemo.com/tm-591-villa-agency
             <a href="property-details.html"><img src="assets/images/upholstery.png" alt=""></a>
             <span class="category">Premium Service</span>
             <!-- <h6>$1.460.000</h6> -->
-            <h4><a href="property-details.html">Upholstery Cleaning</a></h4>
+            <h4><a href="property-details.html">Hot Tub Removal</a></h4>
             <ul class="services-list">
-              <li>Fabric &amp; Leather Sofa Deep Cleaning</li>
-              <li>Office Chair &amp; Cubicle Panel Cleaning</li>
-              <li>Stain and Spot Removal Treatment</li>
-              <li>Odor Elimination &amp; Deodorization</li>
-              <li>Fabric Protector &amp; Scotchgard™ Application</li>
-              <li>Mattress Cleaning &amp; Sanitization</li>
+              <li>Full Hot Tub Disconnection & Removal</li>
+              <li>Indoor & Outdoor Hot Tub Relocation</li>
+              <li>Drainage & Water Disposal Services</li>
+              <li>Disassembly & Safe Handling of Components</li>
+              <li>Recycling & Responsible Disposal of Materials</li>
+              <li>Site Cleanup After Hot Tub Removal</li>
             </ul>
             <div class="main-button">
-              <a href="https://calendly.com/backyardocean">Get a Quote</a>
+              <a href="">Get a Quote</a>
             </div>
           </div>
         </div>
@@ -708,18 +825,19 @@ https://templatemo.com/tm-591-villa-agency
             <a href="property-details.html"><img src="assets/images/carpet.png" alt=""></a>
             <span class="category">Highly Rated</span>
             <!-- <h6>$584.500</h6> -->
-            <h4><a href="property-details.html">Carpet Steam Cleaning</a></h4>
+            <h4><a href="property-details.html">Mattress Disposal</a></h4>
             <ul class="services-list">
-              <li>Deep Carpet Steam Cleaning</li>
-              <li>Stain & Spot Treatment</li>
-              <li>Odor Neutralization</li>
-              <li>High-Traffic Area Restoration</li>
-              <li>Pet Stain & Allergen Removal</li>
-              <li>Eco-Friendly Cleaning Solutions</li>
+              <li>Full Mattress Pickup & Removal</li>
+              <li>Safe Handling & Transportation</li>
+              <li>Recycling & Responsible Disposal</li>
+              <li>Disassembly for Large Mattresses</li>
+              <li>Sanitization & Allergen-Free Disposal</li>
+              <li>Eco-Friendly Mattress Disposal Solutions</li>
+
             </ul>
             
             <div class="main-button">
-              <a href="https://calendly.com/backyardocean">Get a Quote</a>
+              <a href="">Get a Quote</a>
             </div>
           </div>
         </div>
@@ -729,18 +847,19 @@ https://templatemo.com/tm-591-villa-agency
             <a href="property-details.html"><img src="assets/images/powerwash.png" alt=""></a>
             <span class="category">Top Rated</span>
             <!-- <h6>$925.600</h6> -->
-            <h4><a href="property-details.html">Powerwash</a></h4>
+            <h4><a href="property-details.html">Residential Cleanout</a></h4>
             <ul class="services-list">
-              <li>Exterior Surface Power Washing</li>
-              <li>Driveway &amp; Sidewalk Cleaning</li>
-              <li>Patio &amp; Deck Restoration</li>
-              <li>Roof &amp; Gutter Debris Removal</li>
-              <li>Fence &amp; Wall Pressure Cleaning</li>
-              <li>Graffiti &amp; Stain Removal</li>
+              <li>Complete Home Cleanout & Junk Removal</li>
+              <li>Safe Handling of Furniture & Appliances</li>
+              <li>Sorting, Recycling & Responsible Disposal</li>
+              <li>Attic, Basement & Garage Cleanouts</li>
+              <li>Donation of Usable Items</li>
+              <li>Eco-Friendly & Efficient Cleanup Solutions</li>
+
             </ul>
             
             <div class="main-button">
-              <a href="https://calendly.com/backyardocean">Get a Quote</a>
+              <a href="">Get a Quote</a>
             </div>
           </div>
         </div>
@@ -750,35 +869,35 @@ https://templatemo.com/tm-591-villa-agency
             <a href="property-details.html"><img src="assets/images/handyman.png" alt=""></a>
             <span class="category">Top Rated</span>
             <!-- <h6>$925.600</h6> -->
-            <h4><a href="property-details.html">Light Handyman Services</a></h4>
+            <h4><a href="property-details.html">Same Day Service</a></h4>
             <ul class="services-list">
-              <li>Minor Drywall Repairs &amp; Patching</li>
-              <li>Furniture Assembly</li>
-              <li>TV Mounting &amp; Wall Hanging</li>
-              <li>Light Fixture Installation</li>
-              <li>Door &amp; Cabinet Adjustments</li>
-              <li>Caulking &amp; Weatherstripping</li>
-              <li>Shelf &amp; Mirror Installation</li>
+              <li>Fast Same-Day Pickup & Removal</li>
+              <li>Efficient Handling of Furniture & Appliances</li>
+              <li>Quick Sorting, Recycling & Disposal</li>
+              <li>Immediate Attic, Basement & Garage Cleanouts</li>
+              <li>Donation of Usable Items When Possible</li>
+              <li>Eco-Friendly & Rapid Cleanup Solutions</li>
+
             </ul>
             
             <div class="main-button">
-              <a href="https://calendly.com/backyardocean">Get a Quote</a>
+              <a href="">Get a Quote</a>
             </div>
           </div>
         </div>
-
+<!-- 
         <div class="col-lg-4 col-md-6">
           <div class="item">
             <a href="property-details.html"><img src="assets/images/hvac.png" alt=""></a>
             <span class="category">Premium Service</span>
-            <!-- <h6>$925.600</h6> -->
+             <h6>$925.600</h6> 
             <h4><a href="property-details.html">HVAC Maintenance</a></h4>
             <ul class="services-list">
               <li>HVAC System Inspection &amp; Diagnostics</li>
               <li>Filter Replacement &amp; Cleaning</li>
               <li>Thermostat Calibration &amp; Testing</li>
               <li>Air Duct Cleaning &amp; Sanitization</li>
-              <!-- <li>Coil &amp; Condenser Maintenance</li> -->
+               <li>Coil &amp; Condenser Maintenance</li> 
               <li>Refrigerant Level Check &amp; Recharge</li>
               <li>Blower Motor &amp; Fan Testing</li>
             </ul>
@@ -793,7 +912,7 @@ https://templatemo.com/tm-591-villa-agency
           <div class="item">
             <a href="property-details.html"><img src="assets/images/electrical.png" alt=""></a>
             <span class="category">Quick Turnaround</span>
-            <!-- <h6>$925.600</h6> -->
+             <h6>$925.600</h6> 
             <h4><a href="property-details.html">Electrical Repairs</a></h4>
             <ul class="services-list">
               <li>Electrical Troubleshooting &amp; Diagnostics</li>
@@ -801,7 +920,7 @@ https://templatemo.com/tm-591-villa-agency
               <li>Lighting Installation &amp; Repairs</li>
               <li>Panel Upgrades &amp; Circuit Breaker Replacement</li>
               <li>Wiring &amp; Rewiring Services</li>
-              <!-- <li>Ceiling Fan Installation</li> -->
+               <li>Ceiling Fan Installation</li> 
               <li>Emergency Electrical Repairs</li>
             </ul>
             
@@ -815,7 +934,7 @@ https://templatemo.com/tm-591-villa-agency
           <div class="item">
             <a href="property-details.html"><img src="assets/images/window.png" alt=""></a>
             <span class="category">Top Rated</span>
-            <!-- <h6>$925.600</h6> -->
+             <h6>$925.600</h6
             <h4><a href="property-details.html">Window Cleaning</a></h4>
             <ul class="services-list">
               <li>Interior &amp; Exterior Window Washing</li>
@@ -836,7 +955,7 @@ https://templatemo.com/tm-591-villa-agency
           <div class="item">
             <a href="property-details.html"><img src="assets/images/drywall.png" alt=""></a>
             <span class="category">Premium Service</span>
-            <!-- <h6>$925.600</h6> -->
+             <h6>$925.600</h6
             <h4><a href="property-details.html">Drywall Services</a></h4>
             <ul class="services-list">
               <li>Drywall Installation &amp; Hanging</li>
@@ -857,7 +976,7 @@ https://templatemo.com/tm-591-villa-agency
           <div class="item">
             <a href="property-details.html"><img src="assets/images/plumbing.png" alt=""></a>
             <span class="category">Top Rated</span>
-            <!-- <h6>$925.600</h6> -->
+
             <h4><a href="property-details.html">Light Plumbing</a></h4>
             <ul class="services-list">
               <li>Leak Detection &amp; Repair</li>
@@ -878,7 +997,7 @@ https://templatemo.com/tm-591-villa-agency
           <div class="item">
             <a href="property-details.html"><img src="assets/images/painting.png" alt=""></a>
             <span class="category">Premium Service</span>
-            <!-- <h6>$450.000</h6> -->
+
             <h4><a href="property-details.html">Painting</a></h4>
             <ul class="services-list">
               <li>Interior Wall & Ceiling Painting</li>
@@ -896,7 +1015,8 @@ https://templatemo.com/tm-591-villa-agency
         </div>
       </div>
     </div>
-  </div> 
+  </div>  
+-->
 
   
 
@@ -934,18 +1054,19 @@ https://templatemo.com/tm-591-villa-agency
 
 
           </div>
+          
           <div class="row">
             <div class="col-lg-6">
               <div class="item phone">
                 <img src="assets/images/phone-icon.png" alt="" style="max-width: 52px;">
-                <h6 style="font-size: 20px;">+1 (760) 846-5105<br><span style="font-size: 14x;">Phone Number</span></h6>
+                <h6 style="font-size: 20px;">(760) 804-3330<br><span style="font-size: 14x;">Phone Number</span></h6>
 
               </div>
             </div>
             <div class="col-lg-6">
               <div class="item email">
                 <img src="assets/images/email-icon.png" alt="" style="max-width: 52px;">
-                <h6 style="font-size: 16px;">mahroos@backyardocean.llc<br><span style="font-size: 14px;">Business Email</span></h6>
+                <h6 style="font-size: 16px;">office@en-co.com<br><span style="font-size: 14px;">Business Email</span></h6>
 
               </div>
             </div>
@@ -1004,9 +1125,8 @@ https://templatemo.com/tm-591-villa-agency
   <footer>
     <div class="container">
       <div class="col-lg-8">
-        <p>Copyright @ Backyard Ocean, LLC. All rights reserved. 
+        <p>Copyright Junk or Haul. All rights reserved. 
         
-        <!-- Design: <a rel="nofollow" href="https://templatemo.com" target="_blank">Maher Hasan</a> -->
       </p>
       </div>
     </div>
