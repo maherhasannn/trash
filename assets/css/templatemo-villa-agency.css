@@ -147,7 +147,7 @@ body {
 
 .section-heading h2 em {
   font-style: normal;
-  color: #67b3f9;
+  color: #28e135;
 }
 
 .section-heading h6 {
@@ -498,12 +498,12 @@ Header Style
 }
 
 .header-area .main-nav .nav li a.active {
-  color: #67b3f9;
+  color: #28e135;
 }
 
 
 .background-header .main-nav .nav li a.active {
-  color: #67b3f9;
+  color: #28e135;
 }
 
 .header-area .main-nav .menu-trigger {
@@ -769,7 +769,7 @@ Banner Style
 
 .main-banner .item span.category em {
   font-style: normal;
-  color: #41d4f1;
+  color: #1ad309;
 }
 
 .main-banner .item h2 {
@@ -1081,7 +1081,7 @@ Best Deal Style
 }
 
 .best-deal .tabs-content .nav-tabs .nav-link.active {
-  background-color: #67b3f9 !important;
+  background-color: #28e135 !important;
   color: #fff;
 }
 
@@ -1164,7 +1164,7 @@ Properties Style
 }
 
 .properties .item span.category {
-  background-color: #c9e5ff;
+  background-color: #28e135;
   font-weight: 500;
   border-radius: 5px;
   font-size: 14px;
@@ -1203,7 +1203,7 @@ Properties Style
 
 .properties .item h6 {
   font-size: 20px;
-  color: #f35525;
+  color: #28e135;
   margin-top: 6px;
   display: inline-block;
   float: right;
