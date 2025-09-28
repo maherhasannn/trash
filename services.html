@@ -1,117 +1,241 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Services</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f9f9f9;
-      color: #333;
-    }
-    header {
-      background-color: #1e1e1e;
-      color: #fff;
-      padding: 2rem 1rem;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-    header p {
-      margin: 0.5rem 0 0;
-      font-size: 1.2rem;
-    }
-    .services-section {
-      max-width: 1200px;
-      margin: 3rem auto;
-      padding: 0 1rem;
-    }
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
-    .service-card {
-      background-color: #fff;
-      border-radius: 12px;
-      padding: 2rem 1.5rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      text-align: center;
-    }
-    .service-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    }
-    .service-card i {
-      font-size: 2.5rem;
-      color: #ff6b6b;
-      margin-bottom: 1rem;
-    }
-    .service-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-    }
-    .service-card p {
-      font-size: 1rem;
-      line-height: 1.6;
-      color: #666;
-    }
-    footer {
-      background-color: #1e1e1e;
-      color: #fff;
-      text-align: center;
-      padding: 2rem 1rem;
-      margin-top: 3rem;
-    }
-    footer a {
-      color: #ff6b6b;
-      text-decoration: none;
-      font-weight: 500;
-    }
-  </style>
-</head>
-<body>
 
-  <header>
-    <h1>Our Services</h1>
-    <p>Professional solutions to make your space cleaner, safer, and more organized</p>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/images/junklogo.png">
+  <title>Services - Junk or Haul</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Additional CSS Files -->
+  <link rel="stylesheet" href="assets/css/fontawesome.css">
+  <link rel="stylesheet" href="assets/css/templatemo-villa-agency.css">
+  <link rel="stylesheet" href="assets/css/owl.css">
+  <link rel="stylesheet" href="assets/css/animate.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+</head>
+
+<body>
+  <!-- Sub Header -->
+  <div class="sub-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-8">
+          <ul class="info">
+            <li><i class="fa fa-phone"></i> (760) 804-3330</li>
+            <li><i class="fa fa-map"></i> We Service Temecula • Murrieta • Oceanside • San Diego • El Cajon</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header-area header-sticky">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="main-nav">
+            <a href="index.html" class="logo">
+              <img src="assets/images/junkorhaul.png" alt="Junk or Haul" style="height:auto; max-height:150px; width:auto;">
+            </a>
+            <ul class="nav">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about-us.html">About Us</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="services.html" class="active">Services</a></li>
+              <li>
+                <a href="tel:+7608043330" class="call-button"><i class="fa fa-phone"></i> Call Us</a>
+              </li>
+            </ul>
+            <a class='menu-trigger'><span>Menu</span></a>
+          </nav>
+        </div>
+      </div>
+    </div>
   </header>
 
-  <section class="services-section">
-    <div class="services-grid">
-
-      <div class="service-card">
-        <i class="fa fa-dumpster"></i>
-        <h3>Construction & Renovation Waste Removal</h3>
-        <p>Efficient removal of construction debris, renovation waste, and leftover building materials to keep your project site clean and safe.</p>
+  <!-- Services Section -->
+  <div class="properties section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 offset-lg-4">
+          <div class="section-heading text-center">
+            <h6>| Services</h6>
+            <h2>Discover our expertise the way <i>you</i> need it</h2>
+          </div>
+        </div>
       </div>
+      <div class="row">
+        <!-- Service Item -->
+        <div class="col-lg-4 col-md-6">
+          <div class="item">
+            <img src="assets/images/janitor.png" alt="">
+            <span class="category">Premium Service</span>
+            <h4>Appliance Removal</h4>
+            <ul class="services-list">
+              <li>Deep Carpet Steam Cleaning</li>
+              <li>Spot &amp; Stain Removal</li>
+              <li>High-Traffic Area Restoration</li>
+              <li>Odor Elimination &amp; Deodorizing</li>
+              <li>Pet Stain &amp; Allergen Treatment</li>
+              <li>Fast Drying with Low-Moisture Methods</li>
+            </ul>
+            <div class="main-button">
+              <a href="appliance-removal.html">Learn More</a>
+            </div>
+          </div>
+        </div>
 
-      <div class="service-card">
-        <i class="fa fa-couch"></i>
-        <h3>Furniture & Appliance Removal</h3>
-        <p>Professional disposal of old furniture, appliances, and bulky items. We handle heavy lifting and safe removal with care.</p>
+        <div class="col-lg-4 col-md-6">
+          <div class="item">
+            <img src="assets/images/floor.png" alt="">
+            <span class="category">Highly Rated</span>
+            <h4>Furniture Removal</h4>
+            <ul class="services-list">
+              <li>Refrigerator Removal & Recycling</li>
+              <li>Washing Machine & Dryer Disposal</li>
+              <li>Oven & Stove Pickup</li>
+              <li>Dishwasher Removal</li>
+              <li>Microwave & Small Appliance Disposal</li>
+              <li>Eco-Friendly Appliance Recycling</li>
+            </ul>
+            <div class="main-button">
+              <a href="furniture_removal.html">Get a Quote</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="item">
+            <img src="assets/images/upholstery.png" alt="">
+            <span class="category">Premium Service</span>
+            <h4>Hot Tub Removal</h4>
+            <ul class="services-list">
+              <li>Full Hot Tub Disconnection & Removal</li>
+              <li>Indoor & Outdoor Hot Tub Relocation</li>
+              <li>Drainage & Water Disposal Services</li>
+              <li>Disassembly & Safe Handling of Components</li>
+              <li>Recycling & Responsible Disposal of Materials</li>
+              <li>Site Cleanup After Hot Tub Removal</li>
+            </ul>
+            <div class="main-button">
+              <a href="hottub.html">Get a Quote</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="item">
+            <img src="assets/images/carpet.png" alt="">
+            <span class="category">Highly Rated</span>
+            <h4>Mattress Disposal</h4>
+            <ul class="services-list">
+              <li>Full Mattress Pickup & Removal</li>
+              <li>Safe Handling & Transportation</li>
+              <li>Recycling & Responsible Disposal</li>
+              <li>Disassembly for Large Mattresses</li>
+              <li>Sanitization & Allergen-Free Disposal</li>
+              <li>Eco-Friendly Mattress Disposal Solutions</li>
+            </ul>
+            <div class="main-button">
+              <a href="mattress.html">Get a Quote</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="item">
+            <img src="assets/images/powerwash.png" alt="">
+            <span class="category">Top Rated</span>
+            <h4>Residential Cleanout</h4>
+            <ul class="services-list">
+              <li>Complete Home Cleanout & Junk Removal</li>
+              <li>Safe Handling of Furniture & Appliances</li>
+              <li>Sorting, Recycling & Responsible Disposal</li>
+              <li>Attic, Basement & Garage Cleanouts</li>
+              <li>Donation of Usable Items</li>
+              <li>Eco-Friendly & Efficient Cleanup Solutions</li>
+            </ul>
+            <div class="main-button">
+              <a href="residential_cleanout.html">Get a Quote</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="item">
+            <img src="assets/images/handyman.png" alt="">
+            <span class="category">Top Rated</span>
+            <h4>Same Day Service</h4>
+            <ul class="services-list">
+              <li>Fast Same-Day Pickup & Removal</li>
+              <li>Efficient Handling of Furniture & Appliances</li>
+              <li>Quick Sorting, Recycling & Disposal</li>
+              <li>Immediate Attic, Basement & Garage Cleanouts</li>
+              <li>Donation of Usable Items When Possible</li>
+              <li>Eco-Friendly & Rapid Cleanup Solutions</li>
+            </ul>
+            <div class="main-button">
+              <a href="sameday.html">Get a Quote</a>
+            </div>
+          </div>
+        </div>
+
       </div>
-
-      <div class="service-card">
-        <i class="fa fa-house"></i>
-        <h3>Home Cleanouts</h3>
-        <p>Complete home, garage, and basement cleanouts. We help declutter, dispose of unwanted items, and organize your space efficiently.</p>
-      </div>
-
     </div>
-  </section>
+  </div>
 
+  <!-- Contact Section -->
+  <div class="contact section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 offset-lg-4">
+          <div class="section-heading text-center">
+            <h6>| Contact Us</h6>
+            <h2>Get In Touch With Our Agents</h2>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-7">
+          <iframe 
+            src="https://www.google.com/maps?q=10800+W+Pico+Blvd,+Los+Angeles,+CA&output=embed" 
+            width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy">
+          </iframe>
+        </div>
+        <div class="col-lg-5">
+          <ul class="contact-info">
+            <li><i class="fa fa-phone"></i> (760) 804-3330</li>
+            <li><i class="fa fa-envelope"></i> info@junkorhaul.com</li>
+            <li><i class="fa fa-map-marker"></i> Temecula, CA • Murrieta • Oceanside • San Diego • El Cajon</li>
+          </ul>
+          <div class="main-button">
+            <a href="contact.html">Request a Quote</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
   <footer>
-    <p>Need our services? <a href="tel:+1234567890"><i class="fa fa-phone"></i> Call us now</a></p>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <p>© 2025 Junk or Haul. All Rights Reserved.</p>
+        </div>
+      </div>
+    </div>
   </footer>
 
+  <!-- Scripts -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/custom.js"></script>
 </body>
 </html>
