@@ -147,11 +147,11 @@ body {
 
 .section-heading h2 em {
   font-style: normal;
-  color: #28e135;
+  color: #4CAF50;
 }
 
 .section-heading h6 {
-  color: #67b3f9;
+  color: #4CAF50;
   font-size: 15px;
   text-transform: uppercase;
   font-weight: 700;
@@ -171,7 +171,7 @@ body {
 }
 
 .icon-button a i {
-  background-color: #67b3f9;
+  background-color: #4CAF50;
   height: 50px;
   width: 50px;
   text-align: center;
@@ -367,7 +367,7 @@ Header Style
 
 .sub-header ul.info li i {
   font-size: 20px;
-  color: #41d4f1;
+  color: #4CAF50;
   margin-right: 8px;
 }
 
@@ -474,7 +474,7 @@ Header Style
 }
 
 .header-area .main-nav .nav li:last-child a i {
-  background-color: #67b3f9;
+  background-color: #4CAF50;
   display: inline-block;
   width: 40px;
   height: 40px;
@@ -498,12 +498,12 @@ Header Style
 }
 
 .header-area .main-nav .nav li a.active {
-  color: #28e135;
+  color: #4CAF50;
 }
 
 
 .background-header .main-nav .nav li a.active {
-  color: #28e135;
+  color: #4CAF50;
 }
 
 .header-area .main-nav .menu-trigger {
@@ -745,11 +745,11 @@ Banner Style
 }
 
 .main-banner .item-1 {
-  background-image: url(../images/banner-02.gif);
+  background-image: url(../images/banner-03.gif);
 }
 
 .main-banner .item-2 {
-  background-image: url(../images/banner-02.jpg);
+  background-image: url(../images/banner-03.jpg);
 }
 
 .main-banner .item-3 {
@@ -769,7 +769,7 @@ Banner Style
 
 .main-banner .item span.category em {
   font-style: normal;
-  color: #1ad309;
+  color: #4CAF50;
 }
 
 .main-banner .item h2 {
@@ -1081,7 +1081,7 @@ Best Deal Style
 }
 
 .best-deal .tabs-content .nav-tabs .nav-link.active {
-  background-color: #28e135 !important;
+  background-color: #4CAF50!important;
   color: #fff;
 }
 
@@ -1164,7 +1164,7 @@ Properties Style
 }
 
 .properties .item span.category {
-  background-color: #28e135;
+  background-color: #4CAF50;
   font-weight: 500;
   border-radius: 5px;
   font-size: 14px;

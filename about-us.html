@@ -5,7 +5,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+
+  <link rel="icon" type="image/png" href="assets/images/junklogo.png">
   <title>About Us - Junk or Haul</title>
 
   <!-- Bootstrap core CSS -->
@@ -17,253 +18,293 @@
   <link rel="stylesheet" href="assets/css/owl.css">
   <link rel="stylesheet" href="assets/css/animate.css">
   <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
-
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #f0faf5;
-      color: #333;
-    }
-
-    a {
-      color: #2f7a5f;
-    }
-
-    a:hover {
-      color: #1e5a41;
-      text-decoration: none;
-    }
-
-    .header-area {
-      background: #ffffff;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    }
-
-    .main-nav .nav li a.active {
-      color: #2f7a5f;
-      font-weight: 600;
-    }
-
-    .main-banner {
-      height: 400px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: url('https://images.pexels.com/photos/4206144/pexels-photo-4206144.jpeg') center/cover no-repeat;
-      position: relative;
-    }
-
-    .main-banner::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(47, 122, 95, 0.5);
-    }
-
-    .main-banner div {
-      position: relative;
-      color: #fff;
-      text-align: center;
-      padding: 20px 40px;
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-    }
-
-    h1, h2 {
-      color: #2f7a5f;
-    }
-
-    .mission, .values, .team {
-      padding: 80px 0;
-    }
-
-    .mission img {
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-      width: 100%;
-      height: auto;
-    }
-
-    .values ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .values ul li {
-      background: #ffffff;
-      padding: 20px;
-      border-left: 5px solid #2f7a5f;
-      border-radius: 8px;
-      margin-bottom: 20px;
-      font-size: 16px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    }
-
-    .team-member {
-      margin-bottom: 40px;
-      text-align: center;
-    }
-
-    .team-member img {
-      border-radius: 12px;
-      width: 100%;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-    }
-
-    .team-member h5 {
-      margin-top: 15px;
-      font-weight: 600;
-      color: #2f7a5f;
-    }
-
-    .team-member p {
-      color: #555;
-      font-size: 14px;
-    }
-
-    footer {
-      background: #2f7a5f;
-      color: #fff;
-      padding: 40px 0;
-    }
-
-    footer a {
-      color: #fff;
-    }
-
-    footer a:hover {
-      color: #d9f0e6;
-    }
-
-    @media (max-width: 768px) {
-      .main-banner {
-        height: 300px;
-      }
-
-      .main-banner div {
-        padding: 15px 20px;
-      }
-    }
-  </style>
 </head>
 
 <body>
 
-  <!-- ***** Header Area Start ***** -->
+  <!-- Chatbot HTML -->
+  <div id="chatWidget">
+    <button id="chatToggle">💬</button>
+    <div id="chatBox">
+      <div id="chatHeader">Junk or Haul Assistant</div>
+      <div id="chatContent">
+        <div class="gemini bubble">Hi! 👋 How can I help you today? Click a question below.</div>
+      </div>
+      <div id="chatInputContainer">
+        <input type="text" id="chatInput" placeholder="Type your question..." disabled>
+        <button id="sendChat" disabled>Send</button>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    #chatWidget {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 9999;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    #chatToggle {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    #chatBox {
+      display: none;
+      width: 320px;
+      max-height: 500px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #chatHeader {
+      background: #4CAF50;
+      color: white;
+      padding: 12px;
+      font-weight: bold;
+    }
+
+    #chatContent {
+      flex: 1;
+      padding: 10px;
+      overflow-y: auto;
+      background: #f9f9f9;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    #chatInputContainer {
+      display: flex;
+      border-top: 1px solid #ccc;
+    }
+
+    #chatInput {
+      flex: 1;
+      padding: 8px;
+      border: none;
+      outline: none;
+    }
+
+    #sendChat {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 5px 12px;
+      cursor: pointer;
+    }
+
+    .bubble {
+      padding: 10px 14px;
+      border-radius: 15px;
+      max-width: 80%;
+      margin: 5px 0;
+    }
+
+    .user {
+      background: #4CAF50;
+      color: white;
+      align-self: flex-end;
+    }
+
+    .gemini {
+      background: #e0e0e0;
+      color: black;
+      align-self: flex-start;
+    }
+
+    .faq-btn {
+      background: #f0f0f0;
+      border: none;
+      padding: 6px 10px;
+      border-radius: 12px;
+      cursor: pointer;
+      margin-top: 5px;
+      transition: 0.2s;
+    }
+
+    .faq-btn:hover {
+      background: #ddd;
+    }
+  </style>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const chatToggle = document.getElementById('chatToggle');
+      const chatBox = document.getElementById('chatBox');
+      const chatContent = document.getElementById('chatContent');
+
+      const faqs = [
+        { q: "What areas do you service?", a: "We service Temecula, Murrieta, Oceanside, San Diego, and El Cajon." },
+        { q: "Do you recycle items?", a: "Absolutely! We sort items to recycle, donate, or dispose of responsibly." },
+        { q: "How fast is same-day service?", a: "Our same-day service is available depending on availability. Call for details!" },
+        { q: "Do you remove furniture and appliances?", a: "Yes! We safely remove all types of furniture and appliances." }
+      ];
+
+      function addMessage(msg, sender = "gemini") {
+        const bubble = document.createElement("div");
+        bubble.className = sender + " bubble";
+        bubble.innerHTML = msg;
+        chatContent.appendChild(bubble);
+        chatContent.scrollTop = chatContent.scrollHeight;
+      }
+
+      function showFAQs() {
+        faqs.forEach(faq => {
+          const btn = document.createElement("button");
+          btn.className = "faq-btn";
+          btn.textContent = faq.q;
+          btn.addEventListener("click", () => {
+            addMessage(faq.q, "user");
+            setTimeout(() => addMessage(faq.a, "gemini"), 600);
+          });
+          chatContent.appendChild(btn);
+        });
+      }
+
+      chatToggle.addEventListener("click", () => {
+        chatBox.style.display = chatBox.style.display === "flex" ? "none" : "flex";
+        if (chatBox.style.display === "flex" && !chatContent.querySelector(".faq-btn")) {
+          setTimeout(showFAQs, 300);
+        }
+      });
+    });
+  </script>
+
+  <!-- Header -->
   <header class="header-area header-sticky">
     <div class="container">
       <div class="row">
         <div class="col-12">
           <nav class="main-nav">
             <a href="index.html" class="logo">
-              <img src="assets/images/junkorhaul.png" alt="Junk or Haul" style="height: auto; max-height: 120px; width: auto;">
+              <img src="assets/images/junkorhaul.png" alt="Junk or Haul" style="height: auto; max-height: 150px; width: auto;">
             </a>
             <ul class="nav">
               <li><a href="index.html">Home</a></li>
-              <li><a href="about-us.html" class="active">About Us</a></li>
-              <li><a href="services.html">Services</a></li>
+              <li><a href="about.html" class="active">About Us</a></li>
               <li><a href="contact.html">Contact</a></li>
-              <li><a href="http://calendly.com/backyardocean"><i class="fa fa-calendar"></i> Schedule</a></li>
+              <li><a href="">Services</a></li>
+              <li>
+                <a href="tel:+7608043330" class="call-button">
+                  <i class="fa fa-phone"></i> Call Us
+                </a>
+              </li>
             </ul>
-            <a class='menu-trigger'>
-              <span>Menu</span>
-            </a>
+            <a class='menu-trigger'><span>Menu</span></a>
           </nav>
         </div>
       </div>
     </div>
   </header>
-  <!-- ***** Header Area End ***** -->
 
-  <!-- ***** Hero Section ***** -->
-  <div class="main-banner">
-    <div>
-      <h1>About Junk or Haul</h1>
-      <p>Reliable, Professional, and Eco-Friendly Junk Removal Services</p>
+  
+  <div class="main-banner" style="background: url('assets/images/removal_about.jpeg') center/cover no-repeat; padding: 150px 0; text-align:center; color:white; position: relative;">
+  
+    <div style="display: inline-block; background-color: rgba(255, 255, 255, 0.6); padding: 20px 40px; border-radius: 10px;">
+      <h1 style="margin: 0; font-size: 48px; font-weight: 700;">About Junk or Haul</h1>
+      <p style="margin-top: 10px; font-size: 20px; max-width: 700px;">
+        Your trusted partner for professional junk removal in San Diego and beyond
+      </p>
     </div>
+    
   </div>
+  
+  
 
-  <!-- ***** Mission Section ***** -->
-  <div class="mission container">
+
+  <!-- About Section -->
+<section class="about-us" style="padding: 80px 0; background-color: #f8f8f8;">
+  <div class="container">
     <div class="row align-items-center">
+      
+      <!-- Image Column -->
       <div class="col-lg-6 mb-4 mb-lg-0">
-        <img src="assets/images/junklogo.png" alt="Eco-Friendly Junk Removal">
+        <img src="assets/images/junklogo.png" alt="Our Team" 
+             style="width:100%; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
       </div>
+      
+      <!-- Text Column -->
       <div class="col-lg-6">
-        <h2>Our Mission</h2>
-        <p>At Junk or Haul, our mission is to provide safe, efficient, and environmentally responsible junk removal services. We aim to reduce landfill waste through recycling, donations, and sustainable disposal practices while ensuring every client receives top-notch service.</p>
+        <h2>Who We Are</h2>
+        <p>We’re a locally owned and operated junk removal company serving California with fast, reliable, and eco-friendly services. Whether it’s a last-minute cleanout or a scheduled haul, our team shows up ready to work hard, treat your property with care, and leave your space spotless. We believe in honest pricing, professional service, and doing the job right the first time.</p>
+        
+        <p>We specialize in residential, commercial, and construction site junk removal across California. From old furniture, appliances, yard waste, and renovation debris, to complete property cleanouts—we handle it all. No job is too big or too small. Just point, and we’ll take care of the rest. We also offer same-day and next-day services whenever possible.</p>
+        
+        <!-- Why Choose Us -->
+        <div class="why-choose-us" style="margin-top:40px;">
+          <h3 style="text-align:left; margin-bottom:20px;">Why Choose Us</h3>
+          <ul style="list-style: none; padding-left: 0; font-size: 18px; line-height: 1.8; max-width: 700px;">
+            <li style="margin-bottom: 10px;">✔ <strong>Fast & Reliable</strong> – We show up on time and get the job done quickly.</li>
+            <li style="margin-bottom: 10px;">✔ <strong>Affordable Rates</strong> – Our prices are competitive with no hidden fees.</li>
+            <li style="margin-bottom: 10px;">✔ <strong>Full-Service Cleanups</strong> – We don’t just haul it—we clean up after ourselves too.</li>
+            <li style="margin-bottom: 10px;">✔ <strong>Friendly, Professional Crew</strong> – Courteous, efficient, and ready to help.</li>
+            <li style="margin-bottom: 10px;">✔ <strong>Locally Owned</strong> – We’re part of the California community and care about our neighbors.</li>
+          </ul>
+        </div>
+        <!-- End Why Choose Us -->
+        
       </div>
     </div>
   </div>
+</section>
 
-  <!-- ***** Values Section ***** -->
-  <div class="values container">
-    <div class="row text-center mb-5">
-      <div class="col-lg-12">
-        <h2>Our Values</h2>
-        <p>What makes us different and trusted by our community</p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-4">
-        <ul>
-          <li>Integrity: Transparent and honest communication at all times.</li>
-          <li>Safety: Prioritizing safe practices for our team and clients.</li>
-        </ul>
-      </div>
-      <div class="col-md-4">
-        <ul>
-          <li>Eco-Friendly: Commitment to recycling and responsible disposal.</li>
-          <li>Reliability: Always on time and ready for any challenge.</li>
-        </ul>
-      </div>
-      <div class="col-md-4">
-        <ul>
-          <li>Customer Satisfaction: Going above and beyond for every client.</li>
-          <li>Professionalism: Certified and trained experts handling every project.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
 
-  <!-- ***** Team Section ***** -->
-  <div class="team container">
-    <div class="row text-center mb-5">
-      <div class="col-lg-12">
-        <h6>| Meet Our Team</h6>
-        <h2>People Behind Junk or Haul</h2>
-      </div>
+  <!-- Mission Section -->
+  <section class="mission" style="padding: 80px 0; text-align:center;">
+    <div class="container">
+      <h2>Our Mission</h2>
+      <p style="max-width:700px; margin:auto;">To provide professional, efficient, and responsible junk removal services that make a tangible difference in our community and the environment. We strive to create a seamless experience for our clients, from first call to clean space.</p>
     </div>
-    <div class="row">
-      <div class="col-lg-4 team-member">
-        <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg" alt="Team Member">
-        <h5>John Smith</h5>
-        <p>Founder & CEO – Passionate about sustainable waste solutions.</p>
-      </div>
-      <div class="col-lg-4 team-member">
-        <img src="https://images.pexels.com/photos/3184310/pexels-photo-3184310.jpeg" alt="Team Member">
-        <h5>Jane Doe</h5>
-        <p>Operations Manager – Ensures every project runs smoothly and efficiently.</p>
-      </div>
-      <div class="col-lg-4 team-member">
-        <img src="https://images.pexels.com/photos/3183173/pexels-photo-3183173.jpeg" alt="Team Member">
-        <h5>Michael Lee</h5>
-        <p>Field Supervisor – Leads our on-site teams with professionalism and safety.</p>
-      </div>
-    </div>
-  </div>
+  </section>
 
-  <!-- ***** Footer ***** -->
-  <footer>
-    <div class="container text-center">
-      <p>Copyright Junk or Haul. All rights reserved.</p>
-      <p><a href="index.html">Home</a> | <a href="contact.html">Contact</a></p>
+  <!-- Team Section -->
+  <section class="team" style="padding:80px 0; background-color:#f8f8f8;">
+    <div class="container">
+      <h2 style="text-align:center; margin-bottom:50px;">Meet Our Team</h2>
+      <div class="row">
+        <div class="col-md-4 text-center">
+          <img src="assets/images/member1.jpg" alt="John Doe" class="img-fluid rounded-circle mb-3" style="width:150px; height:150px;">
+          <h5>John Doe</h5>
+          <p>Founder & CEO</p>
+        </div>
+        <div class="col-md-4 text-center">
+          <img src="assets/images/member2.jpg" alt="Jane Smith" class="img-fluid rounded-circle mb-3" style="width:150px; height:150px;">
+          <h5>Jane Smith</h5>
+          <p>Operations Manager</p>
+        </div>
+        <div class="col-md-4 text-center">
+          <img src="assets/images/member3.jpg" alt="Mike Johnson" class="img-fluid rounded-circle mb-3" style="width:150px; height:150px;">
+          <h5>Mike Johnson</h5>
+          <p>Lead Technician</p>
+        </div>
+      </div>
     </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="padding:40px 0; background:#222; color:white; text-align:center;">
+    <p>&copy; 2025 Junk or Haul. All Rights Reserved.</p>
+    <p>Follow us on 
+      <a href="#" style="color:#4CAF50;">Facebook</a>, 
+      <a href="#" style="color:#4CAF50;">Instagram</a>
+    </p>
   </footer>
 
-  <!-- Scripts -->
   <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

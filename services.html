@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Services</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    header {
+      background-color: #1e1e1e;
+      color: #fff;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+    header p {
+      margin: 0.5rem 0 0;
+      font-size: 1.2rem;
+    }
+    .services-section {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 1rem;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .service-card {
+      background-color: #fff;
+      border-radius: 12px;
+      padding: 2rem 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+    }
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    .service-card i {
+      font-size: 2.5rem;
+      color: #ff6b6b;
+      margin-bottom: 1rem;
+    }
+    .service-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .service-card p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #666;
+    }
+    footer {
+      background-color: #1e1e1e;
+      color: #fff;
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 3rem;
+    }
+    footer a {
+      color: #ff6b6b;
+      text-decoration: none;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Our Services</h1>
+    <p>Professional solutions to make your space cleaner, safer, and more organized</p>
+  </header>
+
+  <section class="services-section">
+    <div class="services-grid">
+
+      <div class="service-card">
+        <i class="fa fa-dumpster"></i>
+        <h3>Construction & Renovation Waste Removal</h3>
+        <p>Efficient removal of construction debris, renovation waste, and leftover building materials to keep your project site clean and safe.</p>
+      </div>
+
+      <div class="service-card">
+        <i class="fa fa-couch"></i>
+        <h3>Furniture & Appliance Removal</h3>
+        <p>Professional disposal of old furniture, appliances, and bulky items. We handle heavy lifting and safe removal with care.</p>
+      </div>
+
+      <div class="service-card">
+        <i class="fa fa-house"></i>
+        <h3>Home Cleanouts</h3>
+        <p>Complete home, garage, and basement cleanouts. We help declutter, dispose of unwanted items, and organize your space efficiently.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <p>Need our services? <a href="tel:+1234567890"><i class="fa fa-phone"></i> Call us now</a></p>
+  </footer>
+
+</body>
+</html>
